@@ -4,7 +4,7 @@ Sopel is a simple, lightweight, open source, easy-to-use IRC utility bot, writte
 
 sopel.chat
 
-<img src="https://raw.githubusercontent.com/sopel-irc/sopel/master/docs/source/_static/sopel-black.png" alt="sopel logo" width=%60" height="auto">
+<img src="https://raw.githubusercontent.com/sopel-irc/sopel/master/docs/source/_static/sopel-black.png" alt="sopel logo" width="%60" height="auto">
 
 ## How to use this Makejail
 
