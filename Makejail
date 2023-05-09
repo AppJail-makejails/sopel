@@ -1,0 +1,58 @@
+INCLUDE gh+AppJail-makejails/python
+
+ARG sopel_interactive=1
+ARG sopel_profiles=default
+ARG sopel_plugins?
+
+RAW if [ -n "${sopel_plugins}" -a ! -d "${sopel_plugins}" ]; then
+	CMD echo "###> '${sopel_plugins}' is not a directory or does not exist. <###"
+	RAW exit 1
+RAW fi
+
+CMD echo "======> Installing <======"
+
+PKG py%{PYTHON_MAJOR}%{PYTHON_MINOR}-sopel
+PKG ca_root_nss
+
+CMD echo "======> Enabling <======"
+
+SYSRC sopel_enable=YES
+
+RAW if [ -n "${sopel_plugins}" ]; then
+	CMD echo "======> Plugins <======"
+
+	CMD mkdir -vp /var/db/sopel/plugins
+	COPY --verbose "${sopel_plugins}/" "/var/db/sopel/plugins"
+
+	CMD echo "======> Plugins: changing owner and group <======"
+
+	CMD chown -vvR sopel:sopel /var/db/sopel/plugins
+RAW fi
+
+RAW if [ "${sopel_interactive}" != 0 ]; then
+	CMD echo "======> Creating profiles <======"
+
+	RAW for sopel_profile in ${sopel_profiles}; do
+		COPY --verbose files/sopel.cfg "/usr/local/etc/sopel/sopel-${sopel_profile}.cfg"
+		CMD chown -vv sopel:sopel "/usr/local/etc/sopel/sopel-${sopel_profile}.cfg"
+	RAW done
+
+	SYSRC "sopel_profiles=${sopel_profiles}"
+
+	CMD echo "======> Configuring <======"
+
+	SERVICE sopel configure
+
+	CMD echo "======> Starting <======"
+
+	SERVICE sopel start
+
+	CMD echo "======> Done <======"
+
+	CMD echo
+	CMD echo "===> If your instance of sopel does not seem to work, check /var/log/sopel for any errors. <==="
+	CMD echo
+
+RAW else
+	SERVICE sopel start
+RAW fi
