@@ -55,6 +55,44 @@ appjail makejail -j sopel \
 
 ### Arguments
 
+* `sopel_tag` (default: `13.2`): see [#tags](#tags).
 * `sopel_interactive` (default: `1`): If different from `0`, the Makejail will create many profiles as indicated by the `sopel_profiles` argument. Also, you must configure each profile interactively.
 * `sopel_profiles` (default: `default`): Profiles to create.
 * `sopel_plugins` (optional): Directory where the plugins will be copied.
+
+## How to build the Image
+
+Make any changes you want to your image.
+
+```
+INCLUDE options/network.makejail
+INCLUDE gh+AppJail-makejails/sopel --file build.makejail
+```
+
+Build the jail:
+
+```sh
+appjail makejail -j sopel
+```
+
+Remove unportable or unnecessary files and directories and export the jail:
+
+```sh
+appjail stop sopel
+appjail cmd local sopel sh -c "rm -f var/log/*"
+appjail cmd local sopel sh -c "rm -f var/cache/pkg/*"
+appjail cmd local sopel sh -c "rm -f var/run/*"
+appjail cmd local sopel vi etc/rc.conf
+appjail image export sopel
+```
+
+## Tags
+
+| Tag    | Arch    | Version           | Type   |
+| ------ | ------- | ----------------- | ------ |
+| `13.2` | `amd64` | `13.2-RELEASE-p1` | `thin` |
+| `13.1` | `amd64` | `13.1-RELEASE-p8` | `thin` |
+
+## Notes
+
+1. The images use Python 3.9.

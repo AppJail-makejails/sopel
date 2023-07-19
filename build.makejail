@@ -1,0 +1,4 @@
+INCLUDE options/options.makejail
+
+PKG py39-sopel
+PKG ca_root_nss

@@ -1,18 +1,19 @@
-INCLUDE gh+AppJail-makejails/python
+INCLUDE options/options.makejail
 
+# Sopel configuration
 ARG sopel_interactive=1
 ARG sopel_profiles=default
 ARG sopel_plugins?
+
+# Sopel image tag
+ARG sopel_tag=13.2
+
+FROM --entrypoint gh+AppJail-makejails/sopel sopel:${sopel_tag}
 
 RAW if [ -n "${sopel_plugins}" -a ! -d "${sopel_plugins}" ]; then
 	CMD echo "###> '${sopel_plugins}' is not a directory or does not exist. <###"
 	RAW exit 1
 RAW fi
-
-CMD echo "======> Installing <======"
-
-PKG py%{PYTHON_MAJOR}%{PYTHON_MINOR}-sopel
-PKG ca_root_nss
 
 CMD echo "======> Enabling <======"
 
