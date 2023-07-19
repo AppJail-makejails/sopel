@@ -27,36 +27,8 @@ OPTION nat
 
 Open a shell and run `appjail makejail`:
 
-```
-appjail makejail -j sopel \
-    -o copydir=/tmp/files \
-    -o file=/usr/local/etc/pkg/repos/FreeBSD.conf
-```
-
-The tree structure of the `/tmp/files` directory is a follows:
-
-```
-[drwxr-xr-x root     wheel   ]  /tmp/files
-└── [drwxr-xr-x root     wheel   ]  usr
-    └── [drwxr-xr-x root     wheel   ]  local
-        └── [drwxr-xr-x root     wheel   ]  etc
-            └── [drwxr-xr-x root     wheel   ]  pkg
-                └── [drwxr-xr-x root     wheel   ]  repos
-                    └── [-rw-r--r-- root     wheel   ]  FreeBSD.conf
-
-6 directories, 1 file
-```
-
-Where `FreeBSD.conf` is a configuration file for `pkg(8)` to use the `latest` branch since sopel is not yet compiled on the `quarterly` branch:
-
-```
-FreeBSD: {
-  url: "pkg+http://pkg.FreeBSD.org/${ABI}/latest",
-  mirror_type: "srv",
-  signature_type: "fingerprints",
-  fingerprints: "/usr/share/keys/pkg",
-  enabled: yes
-}
+```sh
+appjail makejail -j sopel
 ```
 
 This Makejail uses the built-in rc script features to configure sopel interactively. After installing sopel and its dependencies, the Makejail will prompt you for some settings.
@@ -67,8 +39,6 @@ This framework allows you to create cool plugins to exploit IRC capabilities. Th
 
 ```
 appjail makejail -j sopel \
-    -o copydir=/tmp/files \
-    -o file=/usr/local/etc/pkg/repos/FreeBSD.conf -- \
     --network testing \
     --sopel_plugins /tmp/plugins
 ```
@@ -79,8 +49,6 @@ The rc script can run many instances of sopel, but first you need to create prof
 
 ```
 appjail makejail -j sopel \
-    -o copydir=/tmp/files \
-    -o file=/usr/local/etc/pkg/repos/FreeBSD.conf -- \
     --network testing \
     --sopel_profiles "profile1 profile2"
 ```
