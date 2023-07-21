@@ -34,6 +34,7 @@ RAW if [ "${sopel_interactive}" != 0 ]; then
 	CMD echo "======> Creating profiles <======"
 
 	RAW for sopel_profile in ${sopel_profiles}; do
+		VAR --make-arg-env sopel_profile=${sopel_profile}
 		COPY --verbose files/sopel.cfg "/usr/local/etc/sopel/sopel-${sopel_profile}.cfg"
 		CMD chown -vv sopel:sopel "/usr/local/etc/sopel/sopel-${sopel_profile}.cfg"
 	RAW done
