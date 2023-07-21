@@ -2,3 +2,6 @@ INCLUDE options/options.makejail
 
 PKG py39-sopel
 PKG ca_root_nss
+
+# See https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=272629
+COPY usr
