@@ -1,17 +1,17 @@
 tags: 13.1
 13.1.arch: amd64
 13.1.name: "sopel"
-13.1.timestamp.amd64: 1689796078
-13.1.sum.amd64: 002b0d3423585d5184cf24455af7be2f75a34d1131421fc5e19bd390f3268ede
-13.1.size.amd64: 49994196
-13.1.source.amd64: https://dtxdf.duckdns.org/h4S2ca3fzd/sopel_13_1_amd64_image_appjail
-13.1.source.amd64+: https://anonget.onrender.com/h4S2ca3fzd/sopel_13_1_amd64_image_appjail
+13.1.timestamp.amd64: 1689908539
+13.1.sum.amd64: 3a819e4b4170c030a0a3b29d3fd5c5e7eb597235a5fccbb13f1bb01aff0f396b
+13.1.size.amd64: 50744332
+13.1.source.amd64: https://dtxdf.duckdns.org/OaCcq33cz5/sopel_13_1_amd64_image_appjail
+13.1.source.amd64+: https://anonget.onrender.com/OaCcq33cz5/sopel_13_1_amd64_image_appjail
 
 tags+: 13.2
 13.2.arch: amd64
 13.2.name: "sopel"
-13.2.timestamp.amd64: 1689796530
-13.2.sum.amd64: d3a0c757cda6b808f4dc30c68b094a4ff0944fb751c719006c169b8c82868c33
-13.2.size.amd64: 51163776
-13.2.source.amd64: https://dtxdf.duckdns.org/xbS1c734z2/sopel_13_2_amd64_image_appjail
-13.2.source.amd64+: https://anonget.onrender.com/xbS1c734z2/sopel_13_2_amd64_image_appjail
+13.2.timestamp.amd64: 1689908541
+13.2.sum.amd64: 4cc383613a42b4f2f5d39c05da1ee0a8ba7a021d9014033c192a6b52e2fee3dd
+13.2.size.amd64: 50243552
+13.2.source.amd64: https://dtxdf.duckdns.org/H9C3qf31zc/sopel_13_2_amd64_image_appjail
+13.2.source.amd64+: https://anonget.onrender.com/H9C3qf31zc/sopel_13_2_amd64_image_appjail
