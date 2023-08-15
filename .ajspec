@@ -1,9 +1,7 @@
 tags: 13.2
 13.2.arch: amd64
 13.2.name: "sopel"
-13.2.timestamp.amd64: 1691178182
-13.2.sum.amd64: 67370c3628c35a12f2dbdf0c09ed1f068593dceded234afb49535656d01ff93f
-13.2.size.amd64: 51747248
-13.2.source.amd64: https://dtxdf.duckdns.org/keVbO068ze/sopel_13_2_amd64_image_appjail
-13.2.source.amd64+: https://storm-bsd.duckdns.org/keVbO068ze/sopel_13_2_amd64_image_appjail
-13.2.source.amd64+: https://anonget.onrender.com/keVbO068ze/sopel_13_2_amd64_image_appjail
+13.2.timestamp.amd64: 1692095730
+13.2.sum.amd64: fd1283a07538c944c9d7619f5dabb4606431c6ddcff1f9949a84379819403971
+13.2.size.amd64: 51499560
+13.2.source.amd64: "https://drive.google.com/uc?export=download&id=1vr5jpXu9l7q8bffsjnewOKZYXdxsaGhq"
