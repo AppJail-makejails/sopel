@@ -1,8 +1,8 @@
 tags+: 13.2
 13.2.arch: amd64
 13.2.name: "sopel"
-13.2.timestamp.amd64: 1697291211
-13.2.sum.amd64: 2559c5ee0d2b643fe41f007e7062882ab1f0f3ed19f1429a34c4bc56fc27a75d
-13.2.size.amd64: 52118004
+13.2.timestamp.amd64: 1698700947
+13.2.sum.amd64: 0a40ed12c1ae80827d224f9a5d7e022fbe2bdf1c6cd2ab817d755439493fb423
+13.2.size.amd64: 50892400
 13.2.source.amd64: https://images.all101bsd.download/sopel/13.2-amd64-image.appjail
 13.2.source.amd64+: http://appjail.hpc.at/sopel/13.2-amd64-image.appjail
