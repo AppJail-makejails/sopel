@@ -55,7 +55,7 @@ appjail makejail -j sopel \
 
 ### Arguments
 
-* `sopel_tag` (default: `13.2`): see [#tags](#tags).
+* `sopel_tag` (default: `13.3`): see [#tags](#tags).
 * `sopel_interactive` (default: `1`): If different from `0`, the Makejail will create many profiles as indicated by the `sopel_profiles` argument. Also, you must configure each profile interactively.
 * `sopel_profiles` (default: `default`): Profiles to create.
 * `sopel_plugins` (optional): Directory where the plugins will be copied.
@@ -64,7 +64,7 @@ appjail makejail -j sopel \
 
 | Tag    | Arch    | Version        | Type   |
 | ------ | ------- | -------------- | ------ |
-| `13.2` | `amd64` | `13.2-RELEASE` | `thin` |
+| `13.3` | `amd64` | `13.3-RELEASE` | `thin` |
 | `14.0` | `amd64` | `14.0-RELEASE` | `thin` |
 
 ## Notes
