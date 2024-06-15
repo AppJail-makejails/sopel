@@ -1,4 +1,4 @@
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
-PKG py311-sopel ca_root_nss
+PKG py311-sopel py311-sopel-help ca_root_nss
