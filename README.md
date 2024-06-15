@@ -10,47 +10,50 @@ sopel.chat
 
 ### Basic usage
 
-```
-INCLUDE options/network.makejail
-INCLUDE gh+AppJail-makejails/sopel
-```
-
-Where `options/network.makejail` are the options that suit your environment, for example:
-
-```
-ARG network
-ARG interface=sopel
-
-OPTION virtualnet=${network}:${interface} default
-OPTION nat
-```
-
-Open a shell and run `appjail makejail`:
-
 ```sh
-appjail makejail -j sopel
+appjail makejail \
+    -j sopel \
+    -f gh+AppJail-makejails/sopel \
+    -o virtualnet=":<random> default" \
+    -o nat
 ```
 
-This Makejail uses the built-in rc script features to configure sopel interactively. After installing sopel and its dependencies, the Makejail will prompt you for some settings.
+### Deploy using appjail-director
 
-### Plugins
+**appjail-director.yml**:
 
-This framework allows you to create cool plugins to exploit IRC capabilities. The Makejail for sopel provides a simple way to install your plugins, though, nor their dependencies so you need to carefully install them in your Makejail when needed.
+```yaml
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+
+services:
+  irc-bot:
+    name: sopel
+    makejail: gh+AppJail-makejails/sopel
+    arguments:
+      - sopel_interactive: 0
+      - sopel_tag: 14.1
+    volumes:
+      - etc: sopel-etc
+      - log: sopel-log
+      - db: sopel-db
+
+default_volume_type: '<volumefs>'
+
+volumes:
+  etc:
+    device: .volumes/etc
+  log:
+    device: .volumes/log
+  db:
+    device: volumes/db
+```
+
+**.env**:
 
 ```
-appjail makejail -j sopel \
-    --network testing \
-    --sopel_plugins /tmp/plugins
-```
-
-### Profiles
-
-The rc script can run many instances of sopel, but first you need to create profiles: just configuration files for each instance of sopel. The rule is to use `sopel-<profile>.cfg` where `<profile>` is the name of the profile. That file must be in `/usr/local/etc/sopel` and you must set the name in `/etc/rc.conf` with `sopel_profiles` before starting sopel. Of course, you need to configure each instance. However, this Makejail simplifies a lot and you only need to provide one parameter and configure the profiles interactively. The Makejail will start each instance of sopel after configuring them.
-
-```
-appjail makejail -j sopel \
-    --network testing \
-    --sopel_profiles "profile1 profile2"
+DIRECTOR_PROJECT=irc-bot
 ```
 
 ### Arguments
@@ -59,6 +62,14 @@ appjail makejail -j sopel \
 * `sopel_interactive` (default: `1`): If different from `0`, the Makejail will create many profiles as indicated by the `sopel_profiles` argument. Also, you must configure each profile interactively.
 * `sopel_profiles` (default: `default`): Profiles to create.
 * `sopel_plugins` (optional): Directory where the plugins will be copied.
+
+### Volumes
+
+| Name      | Owner | Group | Perm | Type | Mountpoint           |
+| --------- | ----- | ----- | ---- | ---- | -------------------- |
+| sopel-etc | 757   | 757   |  700 |  -   | /usr/local/etc/sopel |
+| sopel-log | 757   | 757   |  700 |  -   | /var/log/sopel       |
+| sopel-db  | 757   | 757   |  700 |  -   | /var/db/sopel        |
 
 ## Tags
 
