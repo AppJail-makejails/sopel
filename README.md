@@ -66,7 +66,3 @@ appjail makejail -j sopel \
 | ------ | ------- | -------------- | ------ |
 | `13.3` | `amd64` | `13.3-RELEASE` | `thin` |
 | `14.1` | `amd64` | `14.1-RELEASE` | `thin` |
-
-## Notes
-
-1. The images use Python 3.9.
