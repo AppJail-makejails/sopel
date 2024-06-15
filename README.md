@@ -56,6 +56,17 @@ volumes:
 DIRECTOR_PROJECT=irc-bot
 ```
 
+**.volumes/etc/**:
+
+```console
+# tree -pug .volumes/etc/
+[drwx------ 757      757     ]  .volumes/etc/
+├── [-rw-r--r-- 757      757     ]  sopel-default.cfg
+└── [-rw-r----- 757      757     ]  sopel-default.cfg.sample
+
+1 directory, 2 file
+```
+
 ### Arguments
 
 * `sopel_tag` (default: `13.3`): see [#tags](#tags).
