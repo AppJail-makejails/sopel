@@ -1,0 +1,3 @@
+OPTION volume=sopel-db mountpoint:/var/db/sopel owner:757 group:757 perm:700
+OPTION volume=sopel-plugins mountpoint:/var/db/sopel/plugins owner:757 group:757
+OPTION volume=sopel-log mountpoint:/var/log/sopel owner:757 group:757 perm:700
