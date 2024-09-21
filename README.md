@@ -69,7 +69,7 @@ DIRECTOR_PROJECT=irc-bot
 
 ### Arguments
 
-* `sopel_tag` (default: `13.3`): see [#tags](#tags).
+* `sopel_tag` (default: `13.4`): see [#tags](#tags).
 * `sopel_interactive` (default: `1`): If different from `0`, the Makejail will create many profiles as indicated by the `sopel_profiles` argument. Also, you must configure each profile interactively.
 * `sopel_profiles` (default: `default`): Profiles to create.
 * `sopel_plugins` (optional): Directory where the plugins will be copied.
@@ -86,5 +86,5 @@ DIRECTOR_PROJECT=irc-bot
 
 | Tag    | Arch    | Version        | Type   |
 | ------ | ------- | -------------- | ------ |
-| `13.3` | `amd64` | `13.3-RELEASE` | `thin` |
+| `13.4` | `amd64` | `13.4-RELEASE` | `thin` |
 | `14.1` | `amd64` | `14.1-RELEASE` | `thin` |

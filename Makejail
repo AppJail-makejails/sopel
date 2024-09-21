@@ -6,7 +6,7 @@ ARG sopel_profiles=default
 ARG sopel_plugins?
 
 # Sopel image tag
-ARG sopel_tag=13.3
+ARG sopel_tag=13.4
 
 FROM --entrypoint gh+AppJail-makejails/sopel sopel:${sopel_tag}
 
