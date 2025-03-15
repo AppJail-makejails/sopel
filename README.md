@@ -69,7 +69,7 @@ DIRECTOR_PROJECT=irc-bot
 
 ### Arguments
 
-* `sopel_tag` (default: `13.4`): see [#tags](#tags).
+* `sopel_tag` (default: `13.5`): see [#tags](#tags).
 * `sopel_ajspec` (default: `gh+AppJail-makejails/sopel`): Entry point where the `appjail-ajspec(5)` file is located.
 * `sopel_interactive` (default: `1`): If different from `0`, the Makejail will create many profiles as indicated by the `sopel_profiles` argument. Also, you must configure each profile interactively.
 * `sopel_profiles` (default: `default`): Profiles to create.
@@ -87,5 +87,5 @@ DIRECTOR_PROJECT=irc-bot
 
 | Tag    | Arch    | Version        | Type   |
 | ------ | ------- | -------------- | ------ |
-| `13.4` | `amd64` | `13.4-RELEASE` | `thin` |
+| `13.5` | `amd64` | `13.5-RELEASE` | `thin` |
 | `14.2` | `amd64` | `14.2-RELEASE` | `thin` |

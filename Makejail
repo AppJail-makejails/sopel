@@ -7,7 +7,7 @@ ARG sopel_plugins?
 # ajspec
 ARG sopel_ajspec=gh+AppJail-makejails/sopel
 # Sopel image tag
-ARG sopel_tag=13.4
+ARG sopel_tag=13.5
 
 FROM --entrypoint "${sopel_ajspec}" sopel:${sopel_tag}
 
