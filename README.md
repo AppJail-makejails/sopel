@@ -33,7 +33,7 @@ services:
     makejail: gh+AppJail-makejails/sopel
     arguments:
       - sopel_interactive: 0
-      - sopel_tag: 14.2
+      - sopel_tag: 14.3
     volumes:
       - etc: sopel-etc
       - log: sopel-log
@@ -88,4 +88,4 @@ DIRECTOR_PROJECT=irc-bot
 | Tag    | Arch    | Version        | Type   |
 | ------ | ------- | -------------- | ------ |
 | `13.5` | `amd64` | `13.5-RELEASE` | `thin` |
-| `14.2` | `amd64` | `14.2-RELEASE` | `thin` |
+| `14.3` | `amd64` | `14.3-RELEASE` | `thin` |
