@@ -1,16 +1,17 @@
 tags+: 13.5
 13.5.arch: amd64
 13.5.name: "sopel"
-13.5.timestamp.amd64: 1760584150
-13.5.sum.amd64: 164913025e4f4a80df5398b290dc653e9e63ce431ee2a3ead255160668053abd
-13.5.size.amd64: 91030118
+13.5.timestamp.amd64: 1762405686
+13.5.sum.amd64: b18f32f30503902a3b8ed68cf0160fa7869c90b73c4068f21b764ef436ca590d
+13.5.size.amd64: 91598791
 13.5.source.amd64: "https://images.all101bsd.download/sopel/13.5-amd64-image.appjail"
 13.5.source.amd64+: "http://appjail.hpc.at/sopel/13.5-amd64-image.appjail"
 tags+: 14.3
 14.3.arch: amd64
 14.3.name: "sopel"
-14.3.timestamp.amd64: 1760584399
-14.3.sum.amd64: c946efe30e44873bb949b2cda1371e4dd585efe19e170b8f8db273db27a98e07
-14.3.size.amd64: 91064573
+14.3.timestamp.amd64: 1762405953
+14.3.sum.amd64: 4f58aa883a66724b1adeaf983ac03634235f8849c913cb98fee47941249c0b98
+14.3.size.amd64: 91843289
 14.3.source.amd64: "https://images.all101bsd.download/sopel/14.3-amd64-image.appjail"
 14.3.source.amd64+: "http://appjail.hpc.at/sopel/14.3-amd64-image.appjail"
+maintenance: "This image is uploading, please wait a moment and try again. If you are importing this image using a Makejail that has the '--<name>_ajspec' argument, you can use the 'reproduce' method to use 'appjail-reproduce'. See 'appjail-image(5)' for details."
