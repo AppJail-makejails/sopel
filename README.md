@@ -50,6 +50,14 @@ sopel.chat
 * `PUID` (default: `1000`): Process User ID for the container's main process, allowing you to match the owner of files written to mounted host volumes to your host system's user. Writable volumes are changed based on this environment variable.
 * `UMASK` (default: `0022`): Override default umask setting.
 
+### Volumes
+
+| Name | Owner | Group | Perm | Type | Mountpoint |
+| --- | --- | --- | --- | --- | --- |
+| appjail-8fbb5892d1-var_db_sopel | `${PUID}` | `${PGID}` | - | - | /var/db/sopel |
+| appjail-ddd1069d20-var_log_sopel | `${PUID}` | `${PGID}` | - | - | /var/log/sopel |
+| appjail-ef112a8bc8-usr_local_etc_sopel | `${PUID}` | `${PGID}` | - | - | /usr/local/etc/sopel |
+
 ## OCI Configuration
 
 ```yaml
