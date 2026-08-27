@@ -1,91 +1,67 @@
-# sopel
+# Sopel
 
 Sopel is a simple, lightweight, open source, easy-to-use IRC utility bot, written in Python. It's designed to be easy to use, run and extend.
 
 sopel.chat
 
-<img src="https://raw.githubusercontent.com/sopel-irc/sopel/master/docs/source/_static/sopel-black.png" alt="sopel logo" width="%60" height="auto">
+<img src="https://raw.githubusercontent.com/sopel-irc/sopel/master/docs/source/_static/sopel-black.png" width="30%" height="auto" alt="Sopel logo">
 
 ## How to use this Makejail
 
-### Basic usage
+1. Configure Sopel if you haven't already.
 
-```sh
-appjail makejail \
-    -j sopel \
-    -f gh+AppJail-makejails/sopel \
-    -o virtualnet=":<random> default" \
-    -o nat
-```
+   ```console
+   $ mkdir -p etc log db
+   $ SUFFIX=$(openssl rand -hex 6)
+   $ appjail oci run -i \
+       -o ephemeral \
+       -o overwrite=force \
+       -o virtualnet=":<random> default" \
+       -o nat \
+       -o fstab="$PWD/etc /usr/local/etc/sopel" \
+       -o fstab="$PWD/log /var/log/sopel" \
+       -o fstab="$PWD/db /var/db/sopel" \
+       ghcr.io/appjail-makejails/sopel sopel-${SUFFIX} \
+       sopel configure && \
+     appjail stop sopel-${SUFFIX}
+   ```
 
-### Deploy using appjail-director
+2. Profit!
 
-**appjail-director.yml**:
+   ```console
+   $ appjail oci run -Pd \
+       -o overwrite=force \
+       -o virtualnet=":<random> default" \
+       -o nat \
+       -o fstab="$PWD/etc /usr/local/etc/sopel" \
+       -o fstab="$PWD/log /var/log/sopel" \
+       -o fstab="$PWD/db /var/db/sopel" \
+       ghcr.io/appjail-makejails/sopel sopel
+   ```
+
+### Arguments (stage: build)
+
+* `sopel_from` (default: `ghcr.io/appjail-makejails/sopel`): Location of OCI image. See also [OCI Configuration](#oci-configuration).
+* `sopel_tag` (default: `latest`): OCI image tag. See also [OCI Configuration](#oci-configuration).
+
+### Environment (OCI image)
+
+* `PGID` (default: `1000`): Equivalent to `PUID` but for the Process Group ID.
+* `PUID` (default: `1000`): Process User ID for the container's main process, allowing you to match the owner of files written to mounted host volumes to your host system's user. Writable volumes are changed based on this environment variable.
+* `UMASK` (default: `0022`): Override default umask setting.
+
+## OCI Configuration
 
 ```yaml
-options:
-  - virtualnet: ':<random> default'
-  - nat:
-
-services:
-  irc-bot:
-    name: sopel
-    makejail: gh+AppJail-makejails/sopel
-    arguments:
-      - sopel_interactive: 0
-      - sopel_tag: 15
-    volumes:
-      - etc: sopel-etc
-      - log: sopel-log
-      - db: sopel-db
-
-default_volume_type: '<volumefs>'
-
-volumes:
-  etc:
-    device: .volumes/etc
-  log:
-    device: .volumes/log
-  db:
-    device: volumes/db
+build:
+  variants:
+    - tag: 15.1
+      containerfile: Containerfile
+      aliases: ["latest"]
+      default: true
+      args:
+        FREEBSD_RELEASE: "15.1"
+        PYVER: "312"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
 ```
-
-**.env**:
-
-```
-DIRECTOR_PROJECT=irc-bot
-```
-
-**.volumes/etc/**:
-
-```console
-# tree -pug .volumes/etc/
-[drwx------ 757      757     ]  .volumes/etc/
-├── [-rw-r--r-- 757      757     ]  sopel-default.cfg
-└── [-rw-r----- 757      757     ]  sopel-default.cfg.sample
-
-1 directory, 2 file
-```
-
-### Arguments
-
-* `sopel_tag` (default: `14.3`): see [#tags](#tags).
-* `sopel_ajspec` (default: `gh+AppJail-makejails/sopel`): Entry point where the `appjail-ajspec(5)` file is located.
-* `sopel_interactive` (default: `1`): If different from `0`, the Makejail will create many profiles as indicated by the `sopel_profiles` argument. Also, you must configure each profile interactively.
-* `sopel_profiles` (default: `default`): Profiles to create.
-* `sopel_plugins` (optional): Directory where the plugins will be copied.
-
-### Volumes
-
-| Name      | Owner | Group | Perm | Type | Mountpoint           |
-| --------- | ----- | ----- | ---- | ---- | -------------------- |
-| sopel-etc | 757   | 757   |  700 |  -   | /usr/local/etc/sopel |
-| sopel-log | 757   | 757   |  700 |  -   | /var/log/sopel       |
-| sopel-db  | 757   | 757   |  700 |  -   | /var/db/sopel        |
-
-## Tags
-
-| Tag    | Arch    | Version        | Type   |
-| ------ | ------- | -------------- | ------ |
-| `14.3` | `amd64` | `14.3-RELEASE` | `thin` |
-| `15` | `amd64` | `15` | `thin` |
